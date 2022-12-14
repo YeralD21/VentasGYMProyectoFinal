@@ -22,7 +22,7 @@ public class ProyectoVentasGX {
         new Login().setVisible(true);
         ClienteDaoI dao= new ClienteDAO();
         for (ClienteTO listarCliente : dao.listarClientes()) {
-            System.out.println(""+listarCliente.getDniruc()+"\t"+listarCliente.nombresrs);
+            System.out.println(""+listarCliente.getDniruc()+"\t"+listarCliente.nombres);
         }
         //I´M BETTER
     }

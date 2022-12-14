@@ -13,22 +13,6 @@ import lombok.Data;
 @Data
 public class MarcaTO {
     public int id_marca;
-    public String nombreM;
+    public String nombre;
 
-    public int getId_marca() {
-        return id_marca;
-    }
-
-    public void setId_marca(int id_marca) {
-        this.id_marca = id_marca;
-    }
-
-    public String getNombreM() {
-        return nombreM;
-    }
-
-    public void setNombreM(String nombreM) {
-        this.nombreM = nombreM;
-    }
-    
 }

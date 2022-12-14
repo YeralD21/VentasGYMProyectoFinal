@@ -45,16 +45,16 @@ public class MainCliente extends javax.swing.JPanel {
         List<ClienteTO> listarCleintes = cDao.listarClientes();
         jTable1.setAutoCreateRowSorter(true);
         modelo = (DefaultTableModel) jTable1.getModel();
-        Object[] ob = new Object[8];
+        Object[] ob = new Object[7];
         for (int i = 0; i < listarCleintes.size(); i++) {
-            ob[0] = i + 1;
-            ob[1] = listarCleintes.get(i).getDniruc();
-            ob[2] = listarCleintes.get(i).getNombres();
-            ob[3] = listarCleintes.get(i).getPlan();
-            ob[4] = listarCleintes.get(i).getFecha_inicio();
-            ob[5] = listarCleintes.get(i).getFecha_final();
-            ob[6] = listarCleintes.get(i).getCliente_top();
-            ob[7] = listarCleintes.get(i).getDescuento();
+            
+            ob[0] = listarCleintes.get(i).getDniruc();
+            ob[1] = listarCleintes.get(i).getNombres();
+            ob[2] = listarCleintes.get(i).getPlan();
+            ob[3] = listarCleintes.get(i).getFecha_inicio();
+            ob[4] = listarCleintes.get(i).getFecha_final();
+            ob[5] = listarCleintes.get(i).getCliente_top();
+            ob[6] = listarCleintes.get(i).getDescuento();
             
             modelo.addRow(ob);
         }
@@ -72,10 +72,18 @@ public class MainCliente extends javax.swing.JPanel {
             ClienteTO d
                     = cDao.buscarClientes(valor.toString());
             txtDNI.setText(d.getDniruc());
-            txtNombre.setText(d.getNombresrs());
-            cbxTipo.setSelectedItem(d.getTipo());
-            txtDNI.setEditable(false);
+            txtNombre.setText(d.getNombres());
+            cbxTipo.setSelectedItem(d.getPlan());
+            txtFI1.setText(d.getFecha_inicio());
+            txtFF1.setText(d.getFecha_final());
+            txtClienteTop1.setText(d.getCliente_top());
+            txtDescuento.setText(d.getDescuento());
+            
+            txtClienteTop1.setEditable(false);
+            txtDescuento.setEditable(false);            
+
             btnRegistrar.setText("MODIFICAR");
+            
 //guardarButton.setToolTipText("MODIFICAR");
         } else {
             txtDNI.setEditable(true);
@@ -114,6 +122,14 @@ public class MainCliente extends javax.swing.JPanel {
         txtDNI = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         cbxTipo = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtDescuento = new javax.swing.JTextField();
+        txtFI1 = new javax.swing.JTextField();
+        txtFF1 = new javax.swing.JTextField();
+        txtClienteTop1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -167,6 +183,11 @@ public class MainCliente extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(0, 204, 204));
 
         btnNuevo.setText("NUEVO");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,8 +238,8 @@ public class MainCliente extends javax.swing.JPanel {
         txtNombres.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 117, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Plan");
-        txtNombres.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 162, -1, -1));
+        jLabel4.setText("Descuento");
+        txtNombres.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 20));
 
         txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,15 +262,49 @@ public class MainCliente extends javax.swing.JPanel {
         });
         txtNombres.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 157, 109, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("Plan");
+        txtNombres.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 162, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Fecha Inicio");
+        txtNombres.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText("Fecha Final");
+        txtNombres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setText("ClienteTOP");
+        txtNombres.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, 20));
+
+        txtDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescuentoActionPerformed(evt);
+            }
+        });
+        txtNombres.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 90, -1));
+        txtNombres.add(txtFI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 90, -1));
+        txtNombres.add(txtFF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 90, -1));
+
+        txtClienteTop1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteTop1ActionPerformed(evt);
+            }
+        });
+        txtNombres.add(txtClienteTop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 90, -1));
+
         jPanel4.setBackground(new java.awt.Color(0, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "DNI/RUC", "Nombres", "Plan", "Fecha_Inicio", "Fecha_Final", "Cliente_TOP", "Descuento"
+                "DNI/RUC", "Nombres", "Plan", "Fecha_Inicio", "Fecha_Final", "Cliente_TOP", "Descuento"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,18 +314,15 @@ public class MainCliente extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(130);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(90);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(0).setMinWidth(90);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(200);
         }
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 593, 215));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 593, 330));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -285,7 +337,7 @@ public class MainCliente extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -340,17 +392,22 @@ public class MainCliente extends javax.swing.JPanel {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         cDao = new ClienteDAO();
         ClienteTO to = new ClienteTO();
+        
         to.setDniruc(txtDNI.getText());
-        to.setNombresrs(txtNombre.getText());
-        to.setTipo(cbxTipo.getSelectedItem().toString());
+        to.setNombres(txtNombre.getText());
+        to.setPlan(cbxTipo.getSelectedItem().toString());
+        to.setFecha_inicio(txtNombre.getText());
+        to.setFecha_final(txtNombre.getText());
+        to.setCliente_top(txtNombre.getText());
+        to.setDescuento(txtNombre.getText());
+        
         int fila = jTable1.getSelectedRow();
         if (fila != -1) {
             try {
-
                 int resultado = cDao.update(to);
                 if (resultado != 0) {
                     modelo = (DefaultTableModel) jTable1.getModel();
-                    Object nuevo[] = {fila + 1, to.getDniruc(), to.getNombresrs(), to.getTipo()};
+                    Object nuevo[] = {fila + 1, to.getDniruc(), to.getNombres(), to.getPlan(), to.getFecha_inicio(), to.getFecha_final(), to.getCliente_top(), to.getDescuento()};
                     modelo.removeRow(fila);
                     modelo.insertRow(fila, nuevo);
                     resetForm();
@@ -365,7 +422,7 @@ public class MainCliente extends javax.swing.JPanel {
                 if (msg.showConfirmCustom("Esta seguro de crear un nuevo usuario:?", "Mensaje de Confirmación", "") == 0) {
                     if (cDao.create(to) != 0) {
                         modelo = (DefaultTableModel) jTable1.getModel();
-                        Object nuevo[] = {modelo.getRowCount() + 1, to.getDniruc(), to.getNombresrs(), to.getTipo()};
+                        Object nuevo[] = {modelo.getRowCount() + 1, to.getDniruc(), to.getNombres(), to.getPlan(), to.getFecha_inicio(), to.getFecha_final(), to.getCliente_top(), to.getDescuento()};
                         modelo.addRow(nuevo);
                         resetForm();
                         JOptionPane.showMessageDialog(this, "Registrado");
@@ -381,7 +438,9 @@ public class MainCliente extends javax.swing.JPanel {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         resetForm();
         btnRegistrar.setText("REGISTRAR");
-        txtDNI.setEditable(true);
+        txtClienteTop1.setEditable(true);
+        txtDescuento.setEditable(true);
+        
         jTable1.getSelectionModel().clearSelection();
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -407,6 +466,18 @@ public class MainCliente extends javax.swing.JPanel {
         jTable1.setRowSorter(trsfiltro);     // TODO add your handling code here:
     }//GEN-LAST:event_txtFiltroKeyTyped
 
+    private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescuentoActionPerformed
+
+    private void txtClienteTop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteTop1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteTop1ActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
@@ -417,13 +488,21 @@ public class MainCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtClienteTop1;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtDescuento;
+    private javax.swing.JTextField txtFF1;
+    private javax.swing.JTextField txtFI1;
     private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPanel txtNombres;

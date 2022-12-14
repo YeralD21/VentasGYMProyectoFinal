@@ -47,7 +47,7 @@ public class ProductoDAO implements ProductoDaoI {
             ps = connection.prepareStatement(sql, returns);
 
             ps.setInt(++i, d.getId_producto());
-            ps.setString(++i, d.getNombreP());
+            ps.setString(++i, d.getNombre());
             ps.setDouble(++i, d.getPu());
             ps.setDouble(++i, d.getUtilidad());
             ps.setDouble(++i, d.getStock());
@@ -87,7 +87,7 @@ public class ProductoDAO implements ProductoDaoI {
         try {
             ps = connection.prepareStatement(sql);
             ps.setInt(++i, d.getId_producto());
-            ps.setString(++i, d.getNombreP());
+            ps.setString(++i, d.getNombre());
             ps.setDouble(++i, d.getPu());
             ps.setDouble(++i, d.getUtilidad());
             ps.setDouble(++i, d.getStock());
@@ -134,7 +134,7 @@ public class ProductoDAO implements ProductoDaoI {
                 ProductoTO pro = new ProductoTO();
 
                 pro.setId_producto(rs.getInt("id_producto"));
-                pro.setNombreP(rs.getString("nombreP"));
+                pro.setNombre(rs.getString("nombreP"));
                 pro.setPu(rs.getDouble("Precio Unitario"));
                 pro.setUtilidad(rs.getDouble("utilidad"));
                 pro.setStock(rs.getDouble("stocc"));
@@ -161,7 +161,7 @@ public class ProductoDAO implements ProductoDaoI {
             rs = ps.executeQuery();
             if (rs.next()) {
                 producto.setId_producto(rs.getInt("id_producto"));
-                producto.setNombreP(rs.getString("nombreP"));
+                producto.setNombre(rs.getString("nombreP"));
                 producto.setPu(rs.getDouble("Precio Unitario"));
                 producto.setUtilidad(rs.getDouble("utilidad"));
                 producto.setStock(rs.getDouble("stocc"));

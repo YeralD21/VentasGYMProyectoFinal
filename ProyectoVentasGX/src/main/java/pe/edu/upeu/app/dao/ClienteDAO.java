@@ -69,11 +69,13 @@ public class ClienteDAO implements ClienteDaoI {
 
     @Override
     public int update(ClienteTO d) {
-        System.out.println("actualizar d.getDniruc: " + d.getDniruc());
+        System.out.println("actualizar d.getCliente_top: " + d.getCliente_top());
+        System.out.println("actualizar d.getDescuento: " + d.getDescuento());
+
         int comit = 0;
         String sql = "UPDATE cliente SET "
                 + ""
-                + "plan=?, "
+                
                 + "cliente_top=?, "
                 + "descuento=?, "
               
@@ -82,7 +84,7 @@ public class ClienteDAO implements ClienteDaoI {
         int i = 0;
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(++i, d.getPlan());// RS?
+           
             ps.setString(++i, d.getCliente_top());
             ps.setString(++i, d.getDescuento());
             comit = ps.executeUpdate();

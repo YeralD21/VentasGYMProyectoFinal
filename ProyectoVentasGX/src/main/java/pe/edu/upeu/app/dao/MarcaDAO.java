@@ -46,7 +46,7 @@ public class MarcaDAO implements MarcaDaoI {
         try {
             ps = connection.prepareStatement(sql, returns);
             ps.setInt(++i, d.getId_marca());
-            ps.setString(++i, d.getNombreM());
+            ps.setString(++i, d.getNombre());
 
             rsId = ps.executeUpdate();// 0 no o 1 si commit
             try ( ResultSet rs = ps.getGeneratedKeys()) {
@@ -68,12 +68,12 @@ public class MarcaDAO implements MarcaDaoI {
         int comit = 0;
         String sql = "UPDATE cliente SET "
                 + "WHERE id_marca=?, "
-                + "nombreM=?";
+                + "nombre=?";
         int i = 0;
         try {
             ps = connection.prepareStatement(sql);
             ps.setInt(++i, d.getId_marca());
-            ps.setString(++i, d.getNombreM());
+            ps.setString(++i, d.getNombre());
 
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -110,7 +110,7 @@ public class MarcaDAO implements MarcaDaoI {
                 MarcaTO mar = new MarcaTO();
                 
                 mar.setId_marca(rs.getInt("id_producto"));
-                mar.setNombreM(rs.getString("nombreM"));
+                mar.setNombre(rs.getString("nombre"));
                 
                 listarmarca.add(mar);
             }
@@ -132,7 +132,7 @@ public class MarcaDAO implements MarcaDaoI {
             rs = ps.executeQuery();
             if (rs.next()) {
                 marca.setId_marca(rs.getInt("id_marca"));
-                marca.setNombreM(rs.getString("nombreM"));
+                marca.setNombre(rs.getString("nombre"));
 
             }
         } catch (SQLException e) {
