@@ -39,20 +39,20 @@ public class ClienteDAO implements ClienteDaoI {
     @Override
     public int create(ClienteTO d) {
         int rsId = 0;
-        String sql = "INSERT INTO cliente(dniruc, nombres, plan, fecha_inicio, fecha_final, clinete_top, descuento) "
-                + "VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente(dniruc, nombres, plan, tiempo, fecha_inicio, fecha_final, clinete_top, descuento) "
+                + "VALUES(?,?,?,?,?,?,?,?)";
         int i = 0;
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(++i, d.getDniruc());
             ps.setString(++i, d.getNombres());
             ps.setString(++i, d.getPlan());
+            ps.setString(++i, d.getTiempo());
             ps.setString(++i, d.getFecha_inicio());
             ps.setString(++i, d.getFecha_final());
             ps.setString(++i, d.getCliente_top());
             ps.setString(++i, d.getDescuento());
-          
-            
+
             rsId = ps.executeUpdate();// 0 no o 1 si commit
             try ( ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
@@ -69,24 +69,36 @@ public class ClienteDAO implements ClienteDaoI {
 
     @Override
     public int update(ClienteTO d) {
+
+        System.out.println("actualizar d.getDniruc: " + d.getDniruc());
+        System.out.println("actualizar d.getNombres: " + d.getNombres());
+        System.out.println("actualizar d.getTiempo: " + d.getTiempo());
+        System.out.println("actualizar d.getFecha_inicio: " + d.getFecha_inicio());
+        System.out.println("actualizar d.getFecha_final: " + d.getFecha_final());
         System.out.println("actualizar d.getCliente_top: " + d.getCliente_top());
         System.out.println("actualizar d.getDescuento: " + d.getDescuento());
 
         int comit = 0;
         String sql = "UPDATE cliente SET "
                 + ""
-                
+                + "nombres=?, "
+                + "tiempo=?, "
+                + "fecha_inicio=?, "
+                + "fecha_final=?, "
                 + "cliente_top=?, "
                 + "descuento=?, "
-              
-                
                 + "WHERE dniruc=?";
         int i = 0;
         try {
             ps = connection.prepareStatement(sql);
-           
+
+            ps.setString(++i, d.getNombres());
+            ps.setString(++i, d.getTiempo());
+            ps.setString(++i, d.getFecha_inicio());
+            ps.setString(++i, d.getFecha_final());
             ps.setString(++i, d.getCliente_top());
             ps.setString(++i, d.getDescuento());
+            ps.setString(++i, d.getDniruc());
             comit = ps.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "update", ex);
@@ -96,12 +108,23 @@ public class ClienteDAO implements ClienteDaoI {
 
     @Override
     public int delete(String id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int comit = 0;
+        String sql = "DELETE FROM cliente WHERE dniruc = ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            comit = ps.executeUpdate();
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, "delete", ex);
+            // System.err.println("NO del " + ex.toString());
+            throw new Exception("Detalle:" + ex.getMessage());
+        }
+        return comit;
     }
 
     @Override
     public List<ClienteTO> listCmb(String filter) {
- 
+
         List<ClienteTO> ls = new ArrayList();
         ls.add(new ClienteTO());
         ls.addAll(listarClientes());
@@ -109,7 +132,7 @@ public class ClienteDAO implements ClienteDaoI {
     }
 
     @Override
-    public List <ClienteTO> listarClientes() {
+    public List<ClienteTO> listarClientes() {
         List<ClienteTO> listarclientes = new ArrayList();
         String sql = "SELECT * FROM cliente";
         try {
@@ -121,11 +144,12 @@ public class ClienteDAO implements ClienteDaoI {
                 cli.setDniruc(rs.getString("dniruc"));
                 cli.setNombres(rs.getString("nombres"));
                 cli.setPlan(rs.getString("plan"));
+                cli.setPlan(rs.getString("tiempo"));               
                 cli.setFecha_inicio(rs.getString("fecha_inicio"));
                 cli.setFecha_final(rs.getString("fecha_final"));
                 cli.setCliente_top(rs.getString("cliente_top"));
                 cli.setDescuento(rs.getString("descuento"));
-           
+
                 listarclientes.add(cli);
             }
         } catch (SQLException e) {

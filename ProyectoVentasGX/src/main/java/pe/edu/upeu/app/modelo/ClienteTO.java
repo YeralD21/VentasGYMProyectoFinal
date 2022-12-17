@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class ClienteTO {
     
-public String dniruc, nombres, plan, fecha_inicio, fecha_final, cliente_top, descuento;
+public String dniruc, nombres, plan, tiempo, fecha_inicio, fecha_final, cliente_top, descuento;
 
     
 

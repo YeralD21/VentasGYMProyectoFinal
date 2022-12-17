@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" pref="910" max="32767" attributes="0"/>
+          <Component id="jPanel1" pref="944" max="32767" attributes="0"/>
           <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -110,7 +110,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="txtNombres" max="32767" attributes="0"/>
-              <Component id="jPanel4" alignment="0" pref="363" max="32767" attributes="0"/>
+              <Component id="jPanel4" alignment="0" pref="421" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -231,7 +231,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="320" width="-1" height="20"/>
+                  <AbsoluteConstraints x="10" y="350" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -291,7 +291,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Fecha Inicio"/>
+                <Property name="text" type="java.lang.String" value="Tiempo"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -308,7 +308,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="240" width="-1" height="20"/>
+                  <AbsoluteConstraints x="10" y="270" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -321,7 +321,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="280" width="-1" height="20"/>
+                  <AbsoluteConstraints x="10" y="310" width="-1" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -331,21 +331,21 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="320" width="90" height="-1"/>
+                  <AbsoluteConstraints x="90" y="350" width="90" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFI1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="200" width="90" height="-1"/>
+                  <AbsoluteConstraints x="90" y="230" width="90" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFF1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="240" width="90" height="-1"/>
+                  <AbsoluteConstraints x="90" y="270" width="90" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -355,7 +355,37 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="280" width="90" height="-1"/>
+                  <AbsoluteConstraints x="90" y="310" width="90" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Fecha Inicio"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="240" width="-1" height="20"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFI2">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="230" width="90" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txttiempo">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txttiempoActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="190" width="90" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -378,7 +408,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="6" y="6" width="593" height="330"/>
+                  <AbsoluteConstraints x="6" y="6" width="630" height="400"/>
                 </Constraint>
               </Constraints>
 
@@ -387,10 +417,11 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="3">
+                      <Table columnCount="8" rowCount="3">
                         <Column editable="true" title="DNI/RUC" type="java.lang.Object"/>
                         <Column editable="true" title="Nombres" type="java.lang.Object"/>
                         <Column editable="true" title="Plan" type="java.lang.Object"/>
+                        <Column editable="true" title="Tiempo" type="java.lang.Object"/>
                         <Column editable="true" title="Fecha_Inicio" type="java.lang.Object"/>
                         <Column editable="true" title="Fecha_Final" type="java.lang.Object"/>
                         <Column editable="true" title="Cliente_TOP" type="java.lang.Object"/>
@@ -410,6 +441,11 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="200" minWidth="100" prefWidth="90" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
