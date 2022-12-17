@@ -6,15 +6,18 @@ package pe.edu.upeu.app.gui;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import pe.com.syscenterlife.formvalid.ValidatorItem;
 import pe.edu.upeu.app.dao.ClienteDAO;
 import pe.edu.upeu.app.dao.ClienteDaoI;
 import pe.edu.upeu.app.modelo.ClienteTO;
+import pe.edu.upeu.app.util.ErrorLogger;
 import pe.edu.upeu.app.util.MsgBox;
 
 /**
@@ -31,12 +34,13 @@ public class MainCliente extends javax.swing.JPanel {
     DefaultTableModel modelo;
     TableRowSorter<TableModel> trsfiltro;
     MsgBox msg;
+    static ErrorLogger log = new ErrorLogger(MainCliente.class.getName());
 
     public MainCliente() {
         initComponents();
         ListarClientes();
         for (TIPOCLXIENTE myVar : TIPOCLXIENTE.values()) {
-            cbxTipo.addItem(myVar.toString());
+            cbxPlan.addItem(myVar.toString());
         }
     }
 
@@ -74,18 +78,31 @@ public class MainCliente extends javax.swing.JPanel {
                     = cDao.buscarClientes(valor.toString());
             txtDNI.setText(d.getDniruc());
             txtNombre.setText(d.getNombres());
-            cbxTipo.setSelectedItem(d.getPlan());
+            cbxPlan.setSelectedItem(d.getPlan());
             txttiempo.setText(d.getFecha_inicio());
             txtFI1.setText(d.getFecha_inicio());
             txtFF1.setText(d.getFecha_final());
             txtClienteTop1.setText(d.getCliente_top());
             txtDescuento.setText(d.getDescuento());
 
+            txtDNI.setEditable(false);
+            txtNombre.setEditable(false);
+            txtFI1.setEditable(false);
+            txtFF1.setEditable(false);
+            txtClienteTop1.setEditable(false);
+            txtDescuento.setEditable(false);
+
             btnRegistrar.setText("MODIFICAR");
             
 //guardarButton.setToolTipText("MODIFICAR");
         } else {
-            txtDNI.setEditable(true);
+            txtNombre.setEditable(true);
+            txttiempo.setEditable(true);
+            txtFI1.setEditable(true);
+            txtFF1 .setEditable(true);
+            txtClienteTop1.setEditable(true);
+            txtDescuento.setEditable(true);
+            
         }
 
     }
@@ -93,7 +110,13 @@ public class MainCliente extends javax.swing.JPanel {
     public void resetForm() {
         txtDNI.setText("");
         txtNombre.setText("");
-        cbxTipo.setSelectedIndex(0);
+        cbxPlan.setSelectedIndex(0);
+        txttiempo.setText("");
+        txtFI1.setText("");
+        txtFF1.setText("");
+        txtClienteTop1.setText("");
+        txtDescuento.setText("");
+  
         txtDNI.requestFocus();
     }
 
@@ -120,7 +143,7 @@ public class MainCliente extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtDNI = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        cbxTipo = new javax.swing.JComboBox<>();
+        cbxPlan = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -145,6 +168,11 @@ public class MainCliente extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Gestión de Clientes");
 
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroActionPerformed(evt);
+            }
+        });
         txtFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtFiltroKeyTyped(evt);
@@ -257,12 +285,12 @@ public class MainCliente extends javax.swing.JPanel {
         });
         txtNombres.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 111, 155, -1));
 
-        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
+        cbxPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxTipoActionPerformed(evt);
+                cbxPlanActionPerformed(evt);
             }
         });
-        txtNombres.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 157, 109, -1));
+        txtNombres.add(cbxPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 157, 109, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Plan");
@@ -313,9 +341,7 @@ public class MainCliente extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "DNI/RUC", "Nombres", "Plan", "Tiempo", "Fecha_Inicio", "Fecha_Final", "Cliente_TOP", "Descuento"
@@ -399,22 +425,34 @@ public class MainCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
+    private void cbxPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPlanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxTipoActionPerformed
+    }//GEN-LAST:event_cbxPlanActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        
+        List<ValidatorItem> vals = new ArrayList<>();
+        vals.add(new ValidatorItem("required|number|min:8|max:8", txtDNI, "DNI"));
+        vals.add(new ValidatorItem("required", txtNombres, "Nombres"));
+        vals.add(new ValidatorItem("required", cbxPlan, "Tipo"));
+        vals.add(new ValidatorItem("required|tiempo en meses", txttiempo, "Tiempo"));
+        vals.add(new ValidatorItem("required|fecha de inicio", txtFF1, "Fecha_Inicio"));
+        vals.add(new ValidatorItem("required|fecha final de inscripción", txtFF1, "Fecha_Final"));
+        
+        vals.add(new ValidatorItem("required|Si o No ", txtClienteTop1, "ClienteTop"));
+        vals.add(new ValidatorItem("required|Si o No", txtDescuento, "Descuento"));
+        
         cDao = new ClienteDAO();
         ClienteTO to = new ClienteTO();
         
         to.setDniruc(txtDNI.getText());
         to.setNombres(txtNombre.getText());
-        to.setPlan(cbxTipo.getSelectedItem().toString());
+        to.setPlan(cbxPlan.getSelectedItem()==null?"":cbxPlan.getSelectedItem().toString());
         to.setTiempo(txttiempo.getText());
-        to.setFecha_inicio(txtNombre.getText());
-        to.setFecha_final(txtNombre.getText());
-        to.setCliente_top(txtNombre.getText());
-        to.setDescuento(txtNombre.getText());
+        to.setFecha_inicio(txtFI1.getText());
+        to.setFecha_final(txtFF1.getText());
+        to.setCliente_top(txtClienteTop1.getText());
+        to.setDescuento(txtDescuento.getText());
         
         int fila = jTable1.getSelectedRow();
         if (fila != -1) {
@@ -437,9 +475,10 @@ public class MainCliente extends javax.swing.JPanel {
                 if (msg.showConfirmCustom("Esta seguro de crear un nuevo usuario:?", "Mensaje de Confirmación", "") == 0) {
                     if (cDao.create(to) != 0) {
                         modelo = (DefaultTableModel) jTable1.getModel();
-                        Object nuevo[] = {modelo.getRowCount() + 1, to.getDniruc(), to.getNombres(), to.getPlan(), to.getFecha_inicio(), to.getFecha_final(), to.getCliente_top(), to.getDescuento()};
+                        Object nuevo[] = {modelo.getRowCount() + 1, to.getDniruc(), to.getNombres(), to.getPlan() , to.getTiempo(), to.getFecha_inicio(), to.getFecha_final(), to.getCliente_top(), to.getDescuento()};
                         modelo.addRow(nuevo);
                         resetForm();
+                        
                         JOptionPane.showMessageDialog(this, "Registrado");
                     }
                 }
@@ -451,12 +490,7 @@ public class MainCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        resetForm();
-        btnRegistrar.setText("REGISTRAR");
-        txtClienteTop1.setEditable(true);
-        txtDescuento.setEditable(true);
-        
-        jTable1.getSelectionModel().clearSelection();
+        paintForm();
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void txtNombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombresMouseClicked
@@ -490,19 +524,36 @@ public class MainCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtClienteTop1ActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        resetForm();
+        btnRegistrar.setText("REGISTRAR");
+
+        txtDNI.setEditable(true);
+        txtNombre.setEditable(true);
+        txttiempo.setEditable(true);
+        cbxPlan.setEditable(true);
+        txtFI1.setEditable(true);
+        txtFF1.setEditable(true);
+        txtClienteTop1.setEditable(true);
+        txtDescuento.setEditable(true);
+        
+        
+        jTable1.getSelectionModel().clearSelection();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void txttiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttiempoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttiempoActionPerformed
 
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JComboBox<String> cbxPlan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

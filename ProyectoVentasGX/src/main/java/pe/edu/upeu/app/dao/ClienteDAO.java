@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.ClienteTO;
 import pe.edu.upeu.app.util.ErrorLogger;
+import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
 
 /**
  *
@@ -80,7 +81,7 @@ public class ClienteDAO implements ClienteDaoI {
 
         int comit = 0;
         String sql = "UPDATE cliente SET "
-                + ""
+               
                 + "nombres=?, "
                 + "tiempo=?, "
                 + "fecha_inicio=?, "
@@ -144,7 +145,7 @@ public class ClienteDAO implements ClienteDaoI {
                 cli.setDniruc(rs.getString("dniruc"));
                 cli.setNombres(rs.getString("nombres"));
                 cli.setPlan(rs.getString("plan"));
-                cli.setPlan(rs.getString("tiempo"));               
+                cli.setTiempo(rs.getString("tiempo"));
                 cli.setFecha_inicio(rs.getString("fecha_inicio"));
                 cli.setFecha_final(rs.getString("fecha_final"));
                 cli.setCliente_top(rs.getString("cliente_top"));
@@ -160,12 +161,55 @@ public class ClienteDAO implements ClienteDaoI {
 
     @Override
     public ClienteTO buscarClientes(String dni) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ClienteTO cliente = new ClienteTO();
+        String sql = "SELECT * FROM cliente WHERE dniruc = ?";
+        try {
+            //connection = new Conn().connectSQLite();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, dni);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cliente.setDniruc(rs.getString("dniruc"));
+                cliente.setNombres(rs.getString("nombres"));
+                cliente.setPlan(rs.getString("plan"));
+                cliente.setTiempo(rs.getString("tiempo"));
+                cliente.setFecha_inicio(rs.getString("fecha_inicio"));
+                cliente.setFecha_final(rs.getString("fecha_final"));
+                cliente.setCliente_top(rs.getString("cliente_top"));
+                cliente.setDescuento(rs.getString("descuento"));
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return cliente;
     }
 
     @Override
     public void reportarCliente() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<ModeloDataAutocomplet> listAutoComplet(String filter) {
+        List<ModeloDataAutocomplet> listarclientes = new ArrayList();
+        String sql = "SELECT * FROM cliente WHERE nombrers like ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, filter + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ModeloDataAutocomplet data = new ModeloDataAutocomplet();
+                //ModeloDataAutocomplet.TIPE_DISPLAY = "ID";
+                data.setIdx(rs.getString("dniruc"));
+                data.setNombreDysplay(rs.getString("nombrers"));
+                data.setOtherData(rs.getString("plan"));
+                listarclientes.add(data);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return listarclientes;
     }
 
 }

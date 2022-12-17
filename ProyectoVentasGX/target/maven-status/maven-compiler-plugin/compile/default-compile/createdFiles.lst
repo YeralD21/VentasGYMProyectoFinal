@@ -26,6 +26,7 @@ pe\edu\upeu\app\gui\MainCliente$1.class
 pe\edu\upeu\app\dao\ClienteDaoI.class
 pe\edu\upeu\app\gui\MainCliente$4.class
 pe\edu\upeu\app\components\FondoPanel.class
+pe\edu\upeu\app\gui\MainCliente$13.class
 pe\edu\upeu\app\util\ErrorLogger.class
 pe\edu\upeu\app\components\MyButton$1.class
 pe\edu\upeu\app\modelo\UsuarioTO.class
@@ -34,6 +35,7 @@ pe\edu\upeu\app\gui\MainCliente$7.class
 pe\edu\upeu\app\util\MsgBox.class
 pe\edu\upeu\app\gui\MainCliente$9.class
 pe\edu\upeu\app\util\UtilsX.class
+pe\edu\upeu\app\gui\MainCliente$14.class
 pe\edu\upeu\app\gui\MainCliente$10.class
 pe\edu\upeu\app\dao\conx\Conn.class
 pe\edu\upeu\app\ProyectoVentasGX.class
