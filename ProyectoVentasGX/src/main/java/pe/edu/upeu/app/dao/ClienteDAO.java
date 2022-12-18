@@ -40,7 +40,7 @@ public class ClienteDAO implements ClienteDaoI {
     @Override
     public int create(ClienteTO d) {
         int rsId = 0;
-        String sql = "INSERT INTO cliente(dniruc, nombres, plan, tiempo, fecha_inicio, fecha_final, clinete_top, descuento) "
+        String sql = "INSERT INTO cliente(dniruc, nombre, plan, tiempo, fecha_inicio, fecha_final, cliente_top, descuento) "
                 + "VALUES(?,?,?,?,?,?,?,?)";
         int i = 0;
         try {
@@ -143,7 +143,7 @@ public class ClienteDAO implements ClienteDaoI {
             while (rs.next()) {
                 ClienteTO cli = new ClienteTO();
                 cli.setDniruc(rs.getString("dniruc"));
-                cli.setNombres(rs.getString("nombres"));
+                cli.setNombres(rs.getString("nombre"));
                 cli.setPlan(rs.getString("plan"));
                 cli.setTiempo(rs.getString("tiempo"));
                 cli.setFecha_inicio(rs.getString("fecha_inicio"));
@@ -170,7 +170,7 @@ public class ClienteDAO implements ClienteDaoI {
             rs = ps.executeQuery();
             if (rs.next()) {
                 cliente.setDniruc(rs.getString("dniruc"));
-                cliente.setNombres(rs.getString("nombres"));
+                cliente.setNombres(rs.getString("nombre"));
                 cliente.setPlan(rs.getString("plan"));
                 cliente.setTiempo(rs.getString("tiempo"));
                 cliente.setFecha_inicio(rs.getString("fecha_inicio"));
