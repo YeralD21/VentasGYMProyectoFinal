@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.UsuarioTO;
@@ -40,17 +41,16 @@ public class Login extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         this.setIconImage(image);
-        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.setResizable(false);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(new Dimension(screenSize.width / 2, (screenSize.height - 36) / 2));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        jLabel4.setIcon(new ImageIcon(image));
+        this.repaint();
+        
 
-        /**
-         * Image scaleImage = image.getScaledInstance(lbnImage.getWidth(),
-         * lbnImage.getHeight(), Image.SCALE_DEFAULT); lbnImage.setIcon(new ImageIcon(scaleImage));*
-         */
     }
 
     /**
@@ -160,17 +160,16 @@ public class Login extends javax.swing.JFrame {
             try {
                 connection = Conn.connectSQLite();
                 ps = connection.prepareStatement("SELECT * FROM usuario WHERE user=? and clave=?");
-                
+
                 ps.setString(1, uname);
                 ps.setString(2, pword);
                 rs = ps.executeQuery();
-              
-                
+
                 GUIMain guiMain = new GUIMain();
                 guiMain.setVisible(true);
                 this.dispose();
             } catch (Exception ex) {
-                System.out.println("Succesfull" + ex);
+                System.out.println("" + ex);
             }
         }
     }//GEN-LAST:event_myButton1ActionPerformed

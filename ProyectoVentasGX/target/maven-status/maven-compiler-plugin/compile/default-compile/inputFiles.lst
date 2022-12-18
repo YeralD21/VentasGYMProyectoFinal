@@ -8,6 +8,7 @@ C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\dao\conx\Conn.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\modelo\CategoriaTO.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\components\MyButton.java
+C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\gui\MainVenta.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\dao\ClienteDaoI.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\gui\GUIMain.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\components\PanelBorder.java
@@ -19,8 +20,10 @@ C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\dao\MarcaDAO.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\dao\CategoriaDAO.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\dao\ClienteDAO.java
+C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\gui\FormCliente.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\gui\MainCliente.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\modelo\ProductoTO.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\ProyectoVentasGX.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\modelo\MarcaTO.java
+C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\gui\MainVentas.java
 C:\Users\ACER ASPIRE\Desktop\ExamenGymVentas-main\ProyectoVentasGX\src\main\java\pe\edu\upeu\app\components\FondoPanel.java

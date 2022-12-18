@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.ClienteTO;
 import pe.edu.upeu.app.util.ErrorLogger;
+import pe.com.syscenterlife.autocomp.AutoCompleteTextField;
 import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
+
 
 /**
  *
@@ -193,7 +195,7 @@ public class ClienteDAO implements ClienteDaoI {
     @Override
     public List<ModeloDataAutocomplet> listAutoComplet(String filter) {
         List<ModeloDataAutocomplet> listarclientes = new ArrayList();
-        String sql = "SELECT * FROM cliente WHERE nombrers like ?";
+        String sql = "SELECT * FROM cliente WHERE nombre like ?";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, filter + "%");
@@ -202,8 +204,10 @@ public class ClienteDAO implements ClienteDaoI {
                 ModeloDataAutocomplet data = new ModeloDataAutocomplet();
                 //ModeloDataAutocomplet.TIPE_DISPLAY = "ID";
                 data.setIdx(rs.getString("dniruc"));
-                data.setNombreDysplay(rs.getString("nombrers"));
+                data.setNombreDysplay(rs.getString("nombre"));
                 data.setOtherData(rs.getString("plan"));
+                
+                
                 listarclientes.add(data);
             }
         } catch (SQLException e) {

@@ -5,6 +5,7 @@
 package pe.edu.upeu.app.dao;
 
 import java.util.List;
+import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
 import pe.edu.upeu.app.modelo.ProductoTO;
 
 /**
@@ -21,9 +22,11 @@ public interface ProductoDaoI {
 
     public List<ProductoTO> listCmb(String filter);
 
-    public List <ProductoTO>listarProducto(); // no se si necesitare eso EN UN COMBO BOX pero lo dejo porsiacaso by: YERALD XDD
+    public List <ProductoTO>listarProductos(); // no se si necesitare eso EN UN COMBO BOX pero lo dejo porsiacaso by: YERALD XDD
 
     public ProductoTO buscarProducto(String nombreP);
 
     public void reportarProducto();
+    
+    public List<ModeloDataAutocomplet> listAutoComplet(String filter);
 }

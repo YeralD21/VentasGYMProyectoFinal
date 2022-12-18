@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
+import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
 import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.ProductoTO;
 import pe.edu.upeu.app.util.ErrorLogger;
@@ -40,7 +41,7 @@ public class ProductoDAO implements ProductoDaoI {
     public int create(ProductoTO d) {
         int rsId = 0;
         String[] returns = {"id_producto"};
-        String sql = "INSERT INTO producto(id_producto, nombreP, pu, utilidad, stock, id_categoria, id_marca) "
+        String sql = "INSERT INTO producto(id_producto, nombre, pu, utilidad, stock, id_categoria, id_marca) "
                 + "VALUES(?,?,?,?,?,?,?)";
         int i = 0;
         try {
@@ -123,7 +124,7 @@ public class ProductoDAO implements ProductoDaoI {
     }
 
     @Override
-    public List<ProductoTO> listarProducto() {
+    public List<ProductoTO> listarProductos() {
         List<ProductoTO> listarProducto = new ArrayList();
         String sql = "SELECT * FROM producto";
         try {
@@ -137,7 +138,7 @@ public class ProductoDAO implements ProductoDaoI {
                 pro.setNombre(rs.getString("nombreP"));
                 pro.setPu(rs.getDouble("Precio Unitario"));
                 pro.setUtilidad(rs.getDouble("utilidad"));
-                pro.setStock(rs.getDouble("stocc"));
+                pro.setStock(rs.getDouble("stock"));
                 pro.setId_categoria(rs.getInt("id_categoria"));
                 pro.setId_marca(rs.getInt("id_marca"));
 
@@ -177,6 +178,31 @@ public class ProductoDAO implements ProductoDaoI {
     @Override
     public void reportarProducto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+
+    @Override
+    public List<ModeloDataAutocomplet> listAutoComplet(String filter) {
+        List<ModeloDataAutocomplet> listarProductos = new ArrayList();
+        String sql = "SELECT * FROM producto WHERE nombre like ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, filter + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ModeloDataAutocomplet data = new ModeloDataAutocomplet();
+                //ModeloDataAutocomplet.TIPE_DISPLAY = "ID";
+                data.setIdx(rs.getString("dniruc"));
+                data.setNombreDysplay(rs.getString("nombre"));
+                data.setOtherData(rs.getString("plan"));
+
+                listarProductos.add(data);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return listarProductos;
     }
 
 }
