@@ -12,8 +12,8 @@ import pe.edu.upeu.app.modelo.UsuarioTO;
  * @author ACER ASPIRE
  */
 public interface UsuarioDaoI {
-
-    public int create(UsuarioTO d);
+    
+    public int create/*guardar*/(UsuarioTO d);
 
     public int update(UsuarioTO d);
 
@@ -24,6 +24,8 @@ public interface UsuarioDaoI {
     public List listarUsuario();
 
     public UsuarioTO buscarUsuario(String usuario);
+    
+   
 
     public void reportarUsuario();
 

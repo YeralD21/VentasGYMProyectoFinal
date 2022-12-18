@@ -64,7 +64,9 @@ public class UsuarioDAO implements UsuarioDaoI {
 
     @Override
     public int update(UsuarioTO d) {
-        System.out.println("actualizar d.getId_usuario: " + d.getId_usuario());
+        System.out.println("actualizar d.getId_usuario: " + d.getUser());
+        System.out.println("actualizar d.getId_usuario: " + d.getClave());
+
         int comit = 0;
         String sql = "UPDATE usuario SET "
                 + "WHERE id_usuario=?, "
@@ -108,7 +110,7 @@ public class UsuarioDAO implements UsuarioDaoI {
     @Override
     public List listarUsuario() {
         List<UsuarioTO> listarUsuario = new ArrayList();
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM usuario";
         try {
             connection = new Conn().connectSQLite();
             ps = connection.prepareStatement(sql);
@@ -129,16 +131,15 @@ public class UsuarioDAO implements UsuarioDaoI {
     @Override
     public UsuarioTO buscarUsuario(String usuario) {
         UsuarioTO usern = new UsuarioTO();
-        String sql = "SELECT * FROM usuario WHERE id_usuarioc = ?";
+        String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
         try {
-            connection = new Conn().connectSQLite();
+            //connection = new Conn().connectSQLite();
             ps = connection.prepareStatement(sql);
             String id_usuario = null;
             ps.setString(1, id_usuario);
             rs = ps.executeQuery();
             if (rs.next()) {
-               
-                
+
                 usern.setId_usuario(rs.getInt("id_usuario"));
                 usern.setUser(rs.getString("user"));
                 usern.setClave(rs.getString("clave"));
@@ -154,4 +155,7 @@ public class UsuarioDAO implements UsuarioDaoI {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    
 }
+
+
