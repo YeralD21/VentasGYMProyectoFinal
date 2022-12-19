@@ -131,44 +131,46 @@ public class MainCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         txtFiltro = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         txtNombres = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         txtDNI = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         cbxPlan = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtDescuento = new javax.swing.JTextField();
         txtFI1 = new javax.swing.JTextField();
-        txtFF1 = new javax.swing.JTextField();
-        txtClienteTop1 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtFI2 = new javax.swing.JTextField();
+        txtDescuento = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         txttiempo = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        txtClienteTop1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtFF1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel1.setBorder(new javax.swing.border.MatteBorder(new javax.swing.ImageIcon(getClass().getResource("/fondoVentas1.png")))); // NOI18N
         jPanel1.setToolTipText("");
         jPanel1.setPreferredSize(new java.awt.Dimension(982, 84));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Gestión de Clientes");
-
+        txtFiltro.setFont(new java.awt.Font("Segoe UI Semibold", 3, 12)); // NOI18N
         txtFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFiltroActionPerformed(evt);
@@ -179,31 +181,51 @@ public class MainCliente extends javax.swing.JPanel {
                 txtFiltroKeyTyped(evt);
             }
         });
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 192, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 3, 24)); // NOI18N
+        jLabel1.setText("GESTION CLIENTE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 220, 60));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 3, 18)); // NOI18N
+        jLabel10.setText("BUSQUEDA:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1031, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNombres.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "DNI/RUC", "Nombres", "Plan", "Tiempo", "Fecha_Inicio", "Fecha_Final", "Cliente_TOP", "Descuento"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(90);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(200);
+        }
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 690, 400));
+
+        txtNombres.setBackground(new java.awt.Color(153, 153, 0));
+        txtNombres.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtNombres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombresMouseClicked(evt);
@@ -211,8 +233,13 @@ public class MainCliente extends javax.swing.JPanel {
         });
         txtNombres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.black, null, null));
+        jPanel5.setForeground(new java.awt.Color(204, 204, 0));
 
+        btnNuevo.setBackground(new java.awt.Color(0, 0, 0));
+        btnNuevo.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 0));
         btnNuevo.setText("NUEVO");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +247,9 @@ public class MainCliente extends javax.swing.JPanel {
             }
         });
 
+        btnRegistrar.setBackground(new java.awt.Color(0, 0, 0));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 0));
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,6 +257,9 @@ public class MainCliente extends javax.swing.JPanel {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 0));
         btnEliminar.setText("ELIMINAR");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,147 +288,152 @@ public class MainCliente extends javax.swing.JPanel {
                     .addComponent(btnNuevo)
                     .addComponent(btnRegistrar)
                     .addComponent(btnEliminar))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtNombres.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        txtNombres.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Dni/Ruc");
-        txtNombres.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 71, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Nombres");
-        txtNombres.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 117, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Descuento");
-        txtNombres.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, 20));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 0));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 255, 0), null, null));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDNIActionPerformed(evt);
             }
         });
-        txtNombres.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 65, 112, -1));
+        jPanel3.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 112, -1));
+
+        jLabel2.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel2.setText("Dni/Ruc");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
-        txtNombres.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 111, 155, -1));
+        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 155, -1));
+
+        jLabel3.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel3.setText("Nombres");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 58, -1, 30));
 
         cbxPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxPlanActionPerformed(evt);
             }
         });
-        txtNombres.add(cbxPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 157, 109, -1));
+        jPanel3.add(cbxPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 109, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
         jLabel5.setText("Plan");
-        txtNombres.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 162, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 98, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
         jLabel6.setText("Tiempo");
-        txtNombres.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 20));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Fecha Final");
-        txtNombres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("ClienteTOP");
-        txtNombres.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 20));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        jPanel3.add(txtFI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 90, -1));
 
         txtDescuento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescuentoActionPerformed(evt);
             }
         });
-        txtNombres.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 90, -1));
-        txtNombres.add(txtFI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
-        txtNombres.add(txtFF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 90, -1));
+        jPanel3.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 90, -1));
 
-        txtClienteTop1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClienteTop1ActionPerformed(evt);
-            }
-        });
-        txtNombres.add(txtClienteTop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 90, -1));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Fecha Inicio");
-        txtNombres.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 20));
-        txtNombres.add(txtFI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, -1));
+        jLabel4.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel4.setText("Descuento");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, 20));
 
         txttiempo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttiempoActionPerformed(evt);
             }
         });
-        txtNombres.add(txttiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
+        jPanel3.add(txttiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 90, -1));
 
-        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "DNI/RUC", "Nombres", "Plan", "Tiempo", "Fecha_Inicio", "Fecha_Final", "Cliente_TOP", "Descuento"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+        txtClienteTop1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteTop1ActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(90);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(200);
-        }
+        jPanel3.add(txtClienteTop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 90, -1));
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 630, 400));
+        jLabel8.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel8.setText("ClienteTOP");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 20));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-        );
+        jLabel7.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel7.setText("Fecha Final");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
+        jPanel3.add(txtFF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel9.setFont(new java.awt.Font("Alegreya Sans Black", 3, 14)); // NOI18N
+        jLabel9.setText("Fecha Inicio");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 20));
+
+        txtNombres.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 270, 340));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blackfriday.jpg"))); // NOI18N
+        txtNombres.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -420, -1, -1));
+
+        jPanel4.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 421));
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, 0, 1170, -1));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1030, 420));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyTyped
+        txtFiltro.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String cadena = (txtFiltro.getText());
+                System.out.println("v:" + cadena);
+                txtFiltro.setText(cadena);
+                repaint();
+                trsfiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText()
+                )
+                );
+            }
+        });
+        System.out.println("llego");
+        trsfiltro = new TableRowSorter<>(jTable1.getModel());
+        jTable1.setRowSorter(trsfiltro);     // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroKeyTyped
+
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroActionPerformed
+
+    private void txtNombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresMouseClicked
+
+    private void txtClienteTop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteTop1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteTop1ActionPerformed
+
+    private void txttiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttiempoActionPerformed
+
+    private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescuentoActionPerformed
+
+    private void cbxPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPlanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPlanActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         cDao = new ClienteDAO();
@@ -418,20 +456,8 @@ public class MainCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDNIActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void cbxPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPlanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxPlanActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
+
         List<ValidatorItem> vals = new ArrayList<>();
         vals.add(new ValidatorItem("required|number|min:8|max:8", txtDNI, "DNI"));
         vals.add(new ValidatorItem("required", txtNombres, "Nombres"));
@@ -439,13 +465,13 @@ public class MainCliente extends javax.swing.JPanel {
         vals.add(new ValidatorItem("required|tiempo en meses", txttiempo, "Tiempo"));
         vals.add(new ValidatorItem("required|fecha de inicio", txtFF1, "Fecha_Inicio"));
         vals.add(new ValidatorItem("required|fecha final de inscripción", txtFF1, "Fecha_Final"));
-        
+
         vals.add(new ValidatorItem("required|Si o No ", txtClienteTop1, "ClienteTop"));
         vals.add(new ValidatorItem("required|Si o No", txtDescuento, "Descuento"));
-        
+
         cDao = new ClienteDAO();
         ClienteTO to = new ClienteTO();
-        
+
         to.setDniruc(txtDNI.getText());
         to.setNombres(txtNombre.getText());
         to.setPlan(cbxPlan.getSelectedItem()==null?"":cbxPlan.getSelectedItem().toString());
@@ -454,7 +480,7 @@ public class MainCliente extends javax.swing.JPanel {
         to.setFecha_final(txtFF1.getText());
         to.setCliente_top(txtClienteTop1.getText());
         to.setDescuento(txtDescuento.getText());
-        
+
         int fila = jTable1.getSelectedRow();
         if (fila != -1) {
             try {
@@ -490,40 +516,6 @@ public class MainCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        paintForm();
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtNombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombresMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresMouseClicked
-
-    private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroKeyTyped
-        txtFiltro.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                String cadena = (txtFiltro.getText());
-                System.out.println("v:" + cadena);
-                txtFiltro.setText(cadena);
-                repaint();
-                trsfiltro.setRowFilter(RowFilter.regexFilter(txtFiltro.getText()
-                )
-                );
-            }
-        });
-        System.out.println("llego");
-        trsfiltro = new TableRowSorter<>(jTable1.getModel());
-        jTable1.setRowSorter(trsfiltro);     // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltroKeyTyped
-
-    private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescuentoActionPerformed
-
-    private void txtClienteTop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteTop1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClienteTop1ActionPerformed
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         resetForm();
         btnRegistrar.setText("REGISTRAR");
@@ -536,18 +528,13 @@ public class MainCliente extends javax.swing.JPanel {
         txtFF1.setEditable(true);
         txtClienteTop1.setEditable(true);
         txtDescuento.setEditable(true);
-        
-        
+
         jTable1.getSelectionModel().clearSelection();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void txttiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttiempoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttiempoActionPerformed
-
-    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltroActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        paintForm();
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -556,6 +543,8 @@ public class MainCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbxPlan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -566,6 +555,7 @@ public class MainCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
@@ -575,7 +565,6 @@ public class MainCliente extends javax.swing.JPanel {
     private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtFF1;
     private javax.swing.JTextField txtFI1;
-    private javax.swing.JTextField txtFI2;
     private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPanel txtNombres;

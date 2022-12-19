@@ -26,3 +26,5 @@ String uname = txtuser.getText();
         }
 FABRIZIO (NUEVA BASE DE DATOS)
     -Cliente, Usuario, Producto, Categoria, Marca, Venta, VentaDetalle, Carrito.
+
+FABRIZIO JFRAME - JPANEL (DISEÑOS LOGIN Y MAIN VENTA)
