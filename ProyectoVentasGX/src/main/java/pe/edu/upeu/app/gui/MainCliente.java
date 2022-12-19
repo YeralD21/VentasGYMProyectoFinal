@@ -49,6 +49,7 @@ public class MainCliente extends javax.swing.JPanel {
         List<ClienteTO> listarclientes = cDao.listarClientes();
         jTable1.setAutoCreateRowSorter(true);
         modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
         Object[] ob = new Object[8];
         for (int i = 0; i < listarclientes.size(); i++) {
             
@@ -474,11 +475,11 @@ public class MainCliente extends javax.swing.JPanel {
                 msg = new MsgBox();
                 if (msg.showConfirmCustom("Esta seguro de crear un nuevo usuario:?", "Mensaje de Confirmación", "") == 0) {
                     if (cDao.create(to) != 0) {
-                        modelo = (DefaultTableModel) jTable1.getModel();
+                        /*modelo = (DefaultTableModel) jTable1.getModel();
                         Object nuevo[] = {modelo.getRowCount() + 1, to.getDniruc(), to.getNombres(), to.getPlan() , to.getTiempo(), to.getFecha_inicio(), to.getFecha_final(), to.getCliente_top(), to.getDescuento()};
-                        modelo.addRow(nuevo);
+                        modelo.addRow(nuevo);*/
                         resetForm();
-                        
+                        ListarClientes();
                         JOptionPane.showMessageDialog(this, "Registrado");
                     }
                 }

@@ -29,13 +29,18 @@ public class FormCliente extends javax.swing.JPanel {
         to = new ClienteTO();
         to.setDniruc(txtDNI.getText());
         to.setNombres(txtNombre.getText());
-        to.setPlan(cbxPlan.getSelectedItem() == null ? "" : cbxPlan.getSelectedItem().toString()
+        to.setPlan(cbxPlan.getSelectedItem() == null ? "" : cbxPlan.getSelectedItem().toString());
+        to.setTiempo(txtTiempo.getText());
+        to.setFecha_inicio(txtFI1.getText());
+        to.setFecha_final(txtFF1.getText());
+        to.setCliente_top(txtClienteTop1.getText());
+        to.setDescuento(txtDescuento.getText()
         );
-        
+
         /*para que se almacene en la base de datos ADD*/
         ClienteDaoI daoC = new ClienteDAO();
         daoC.create(to);
-        
+
         return to;
     }
 
@@ -62,6 +67,14 @@ public class FormCliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtClienteTop1 = new javax.swing.JTextField();
+        txtDescuento = new javax.swing.JTextField();
+        txtFF1 = new javax.swing.JTextField();
+        txtTiempo = new javax.swing.JTextField();
+        txtFI1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -74,13 +87,60 @@ public class FormCliente extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setText("Tiempo");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText("Fecha_Inicio");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Fecha_Final");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        txtClienteTop1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteTop1ActionPerformed(evt);
+            }
+        });
+        add(txtClienteTop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 112, -1));
+
+        txtDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescuentoActionPerformed(evt);
+            }
+        });
+        add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 112, -1));
+
+        txtFF1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFF1ActionPerformed(evt);
+            }
+        });
+        add(txtFF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 112, -1));
+
+        txtTiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTiempoActionPerformed(evt);
+            }
+        });
+        add(txtTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 112, -1));
+
+        txtFI1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFI1ActionPerformed(evt);
+            }
+        });
+        add(txtFI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 112, -1));
+
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +148,7 @@ public class FormCliente extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Dni/Ruc");
@@ -124,7 +184,7 @@ public class FormCliente extends javax.swing.JPanel {
         add(cbxPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 109, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FormCiente.jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 300));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 470));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
@@ -146,10 +206,30 @@ public class FormCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+
         getOptionPane();
         op.setValue(1);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtFI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFI1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFI1ActionPerformed
+
+    private void txtTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTiempoActionPerformed
+
+    private void txtFF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFF1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFF1ActionPerformed
+
+    private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescuentoActionPerformed
+
+    private void txtClienteTop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteTop1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteTop1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -160,7 +240,15 @@ public class FormCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private static javax.swing.JTextField txtClienteTop1;
     private static javax.swing.JTextField txtDNI;
+    private static javax.swing.JTextField txtDescuento;
+    private static javax.swing.JTextField txtFF1;
+    private static javax.swing.JTextField txtFI1;
     private static javax.swing.JTextField txtNombre;
+    private static javax.swing.JTextField txtTiempo;
     // End of variables declaration//GEN-END:variables
 }

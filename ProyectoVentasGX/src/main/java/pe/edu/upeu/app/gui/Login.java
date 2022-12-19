@@ -49,7 +49,6 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(true);
         jLabel4.setIcon(new ImageIcon(image));
         this.repaint();
-        
 
     }
 
@@ -165,9 +164,12 @@ public class Login extends javax.swing.JFrame {
                 ps.setString(2, pword);
                 rs = ps.executeQuery();
 
-                GUIMain guiMain = new GUIMain();
-                guiMain.setVisible(true);
-                this.dispose();
+                if (rs.next()) {
+                    GUIMain guiMain = new GUIMain();
+                    guiMain.setVisible(true);
+                    this.dispose();
+                }
+
             } catch (Exception ex) {
                 System.out.println("" + ex);
             }

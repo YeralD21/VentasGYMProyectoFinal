@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.ClienteTO;
 import pe.edu.upeu.app.util.ErrorLogger;
-import pe.com.syscenterlife.autocomp.AutoCompleteTextField;
 import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
 
 
@@ -29,7 +28,7 @@ public class ClienteDAO implements ClienteDaoI {
     Statement stmt = null;
     Vector columnNames;
     Vector visitdata;
-    Connection connection = Conn.connectSQLite();
+    Connection connection;
     static PreparedStatement ps;
     static ErrorLogger log = new ErrorLogger(ClienteDAO.class.getName());
     ResultSet rs = null;
@@ -37,6 +36,7 @@ public class ClienteDAO implements ClienteDaoI {
     public ClienteDAO() {
         columnNames = new Vector();
         visitdata = new Vector();
+        connection = Conn.connectSQLite();
     }
 
     @Override

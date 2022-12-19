@@ -27,14 +27,14 @@ public class ProductoDAO implements ProductoDaoI {
     Statement stmt = null;
     Vector columnNames;
     Vector visitdata;
-    Connection connection = Conn.connectSQLite();
+    Connection connection;
     static PreparedStatement ps;
     static ErrorLogger log = new ErrorLogger(ProductoDAO.class.getName());
     ResultSet rs = null;
 
     public ProductoDAO() {
-        columnNames = new Vector();
-        visitdata = new Vector();
+
+        connection = Conn.connectSQLite();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class ProductoDAO implements ProductoDaoI {
 
     @Override
     public List<ProductoTO> listarProductos() {
-        List<ProductoTO> listarProducto = new ArrayList();
+        List<ProductoTO> listarProductos = new ArrayList();
         String sql = "SELECT * FROM producto";
         try {
             connection = new Conn().connectSQLite();
@@ -135,19 +135,19 @@ public class ProductoDAO implements ProductoDaoI {
                 ProductoTO pro = new ProductoTO();
 
                 pro.setId_producto(rs.getInt("id_producto"));
-                pro.setNombre(rs.getString("nombreP"));
-                pro.setPu(rs.getDouble("Precio Unitario"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setPu(rs.getDouble("pu"));
                 pro.setUtilidad(rs.getDouble("utilidad"));
                 pro.setStock(rs.getDouble("stock"));
                 pro.setId_categoria(rs.getInt("id_categoria"));
                 pro.setId_marca(rs.getInt("id_marca"));
 
-                listarProducto.add(pro);
+                listarProductos.add(pro);
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-        return listarProducto;
+        return listarProductos;
     }
 
     @Override
@@ -180,8 +180,6 @@ public class ProductoDAO implements ProductoDaoI {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
-
     @Override
     public List<ModeloDataAutocomplet> listAutoComplet(String filter) {
         List<ModeloDataAutocomplet> listarProductos = new ArrayList();
@@ -192,11 +190,10 @@ public class ProductoDAO implements ProductoDaoI {
             rs = ps.executeQuery();
             while (rs.next()) {
                 ModeloDataAutocomplet data = new ModeloDataAutocomplet();
-                //ModeloDataAutocomplet.TIPE_DISPLAY = "ID";
-                data.setIdx(rs.getString("dniruc"));
-                data.setNombreDysplay(rs.getString("nombre"));
-                data.setOtherData(rs.getString("plan"));
-
+                /*ModeloDataAutocomplet.TIPE_DISPLAY = "ID";*/
+                data.setIdx(rs.getString("nombre"));
+                data.setNombreDysplay(rs.getString("id_producto"));
+                data.setOtherData(rs.getDouble("pu") + ":" + rs.getDouble("stock"));
                 listarProductos.add(data);
             }
         } catch (SQLException e) {

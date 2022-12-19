@@ -17,6 +17,7 @@ pe\edu\upeu\app\gui\MainCliente$2.class
 pe\edu\upeu\app\gui\MainVentas$1.class
 pe\edu\upeu\app\modelo\CategoriaTO.class
 pe\edu\upeu\app\dao\MarcaDaoI.class
+pe\edu\upeu\app\gui\FormCliente$10.class
 pe\edu\upeu\app\components\MyButton.class
 pe\edu\upeu\app\gui\Login$2.class
 pe\edu\upeu\app\modelo\MarcaTO.class
@@ -24,8 +25,11 @@ pe\edu\upeu\app\dao\MarcaDAO.class
 pe\edu\upeu\app\gui\MainCliente$5.class
 pe\edu\upeu\app\dao\UsuarioDAO.class
 pe\edu\upeu\app\gui\FormCliente$3.class
-pe\edu\upeu\app\gui\MainVenta.class
+pe\edu\upeu\app\gui\FormCliente$9.class
+pe\edu\upeu\app\gui\MainVentas$4.class
 pe\edu\upeu\app\gui\MainCliente$8.class
+pe\edu\upeu\app\gui\FormCliente$6.class
+pe\edu\upeu\app\gui\FormCliente$7.class
 pe\edu\upeu\app\gui\Login$1.class
 pe\edu\upeu\app\gui\GUIMain$MenuItemListener.class
 pe\edu\upeu\app\gui\MainCliente$1.class
@@ -46,6 +50,7 @@ pe\edu\upeu\app\util\MsgBox.class
 pe\edu\upeu\app\gui\MainCliente$9.class
 pe\edu\upeu\app\util\UtilsX.class
 pe\edu\upeu\app\gui\MainCliente$14.class
+pe\edu\upeu\app\gui\FormCliente$8.class
 pe\edu\upeu\app\gui\MainCliente$10.class
 pe\edu\upeu\app\dao\conx\Conn.class
 pe\edu\upeu\app\gui\FormCliente$4.class

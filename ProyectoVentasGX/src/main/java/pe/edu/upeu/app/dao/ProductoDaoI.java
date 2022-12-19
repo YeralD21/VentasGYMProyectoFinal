@@ -24,7 +24,7 @@ public interface ProductoDaoI {
 
     public List <ProductoTO>listarProductos(); // no se si necesitare eso EN UN COMBO BOX pero lo dejo porsiacaso by: YERALD XDD
 
-    public ProductoTO buscarProducto(String nombreP);
+    public ProductoTO buscarProducto(String nombre);
 
     public void reportarProducto();
     
