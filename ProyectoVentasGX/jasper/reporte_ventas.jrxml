@@ -219,7 +219,7 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 7" style="table 7" x="60" y="0" width="450" height="35" uuid="19e9efa2-0d9a-4d51-a925-b90ed03a54c3"/>
+				<reportElement key="table 7" style="table 7" x="26" y="0" width="411" height="35" uuid="19e9efa2-0d9a-4d51-a925-b90ed03a54c3"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="4a327698-e087-44e5-9e87-830b8f08864b">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>

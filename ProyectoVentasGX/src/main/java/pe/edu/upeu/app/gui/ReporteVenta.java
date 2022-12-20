@@ -43,6 +43,8 @@ public class ReporteVenta extends javax.swing.JPanel {
             jPanel2.revalidate();
             Connection connection = Conn.connectSQLite();
             HashMap param = new HashMap();
+            String imagen=getFile("Cronos.jpg").getAbsolutePath();
+            param.put("imagen",imagen);
             JasperDesign jdesign = JRXmlLoader.load(getFile("reporte_ventas.jrxml"));
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, param, connection);

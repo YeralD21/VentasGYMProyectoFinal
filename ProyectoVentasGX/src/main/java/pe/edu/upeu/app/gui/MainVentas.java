@@ -503,7 +503,7 @@ public class MainVentas extends javax.swing.JPanel {
         try {
             connection = Conn.connectSQLite();
             HashMap param = new HashMap();
-            String imgen = getFile("upeulogo.png").getAbsolutePath(); 
+            String imgen = getFile("Cronos.jpg").getAbsolutePath(); 
             param.put("idventa", idventa);
             param.put("imagen", imgen);                       
             JasperDesign jdesign = JRXmlLoader.load(getFile("Comprobante.jrxml"));
