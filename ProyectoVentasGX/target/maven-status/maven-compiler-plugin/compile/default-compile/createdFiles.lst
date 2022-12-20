@@ -1,3 +1,4 @@
+pe\edu\upeu\app\gui\ReporteVenta$1.class
 pe\edu\upeu\app\gui\MainCliente$11.class
 pe\edu\upeu\app\dao\VentaDaoI.class
 pe\edu\upeu\app\dao\CarritoDaoI.class
@@ -7,6 +8,7 @@ pe\edu\upeu\app\gui\FormCliente$5.class
 pe\edu\upeu\app\gui\FormCliente$2.class
 pe\edu\upeu\app\gui\TIPOCLXIENTE.class
 pe\edu\upeu\app\gui\MainCliente$2.class
+pe\edu\upeu\app\gui\ReporteVenta.class
 pe\edu\upeu\app\gui\MainVentas$1.class
 pe\edu\upeu\app\dao\MarcaDaoI.class
 pe\edu\upeu\app\gui\Login$2.class
@@ -48,6 +50,7 @@ pe\edu\upeu\app\dao\UsuarioDaoI.class
 pe\edu\upeu\app\gui\MainCliente$12.class
 pe\edu\upeu\app\modelo\CategoriaTO.class
 pe\edu\upeu\app\gui\FormCliente$10.class
+pe\edu\upeu\app\gui\ReporteVenta$2.class
 pe\edu\upeu\app\components\MyButton.class
 pe\edu\upeu\app\dao\MarcaDAO.class
 pe\edu\upeu\app\gui\FormCliente$3.class

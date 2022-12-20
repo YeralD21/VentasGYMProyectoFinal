@@ -4,14 +4,31 @@
  */
 package pe.edu.upeu.app.gui;
 
+import static com.sun.source.util.Trees.instance;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Connection;
+
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import static net.sf.jasperreports.engine.xml.JRXmlTemplateDigesterFactory.instance;
+import static net.sf.jasperreports.engine.xml.XmlValueHandlerUtils.instance;
+import net.sf.jasperreports.view.JasperViewer;
 import pe.com.syscenterlife.autocomp.AutoCompleteTextField;
 import pe.com.syscenterlife.autocomp.ModeloDataAutocomplet;
 import pe.com.syscenterlife.jtablecomp.ButtonsEditor;
@@ -25,6 +42,7 @@ import pe.edu.upeu.app.dao.ProductoDAO;
 import pe.edu.upeu.app.dao.ProductoDaoI;
 import pe.edu.upeu.app.dao.VentaDAO;
 import pe.edu.upeu.app.dao.VentaDaoI;
+import pe.edu.upeu.app.dao.conx.Conn;
 import pe.edu.upeu.app.modelo.CarritoTO;
 import pe.edu.upeu.app.modelo.ClienteTO;
 import pe.edu.upeu.app.modelo.VentaDetalleTO;
@@ -46,6 +64,7 @@ public class MainVentas extends javax.swing.JPanel {
     VentaDaoI daoV;
     List<ModeloDataAutocomplet> items;
     List<ModeloDataAutocomplet> itemsP;
+    Connection connection;
 
     public MainVentas() {
         initComponents();
@@ -133,9 +152,9 @@ public class MainVentas extends javax.swing.JPanel {
             ob[++x] = listarClientes.get(i).getEstado();
             ob[++x] = "";
             impoTotal += Double.parseDouble(String.valueOf(listarClientes.get(i).getPtotal()));
-            
+
             cantidad = Double.parseDouble(String.valueOf(listarClientes.get(i).getCantidad()));
-            
+
             modelo.addRow(ob);
         }
         JButton btnDel = be.getCellEditorValue().buttons.get(0);
@@ -156,8 +175,6 @@ public class MainVentas extends javax.swing.JPanel {
         });
         jTable1.setModel(modelo);
 
-        
-    
         //CONDICIONAL
         if (cantidad > 3) {
             double totalDscTop = impoTotal * 0.20;
@@ -175,7 +192,6 @@ public class MainVentas extends javax.swing.JPanel {
             return listarClientes;
         }
         return listarClientes;
-        
 
     }
 
@@ -472,16 +488,41 @@ public class MainVentas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         registarVenta();
-     
+
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-    
+
     public void limpiarCarrito() {
         daoCA = new CarritoDAO();
         daoCA.deleteCarAll(txtAutoCompDNI.getText());
         listarCarrito(txtAutoCompDNI.getText());
+    }
+
+   private void runReport1(int idventa) {
+        try {
+            connection = Conn.connectSQLite();
+            HashMap param = new HashMap();
+            String imgen = getFile("upeulogo.png").getAbsolutePath(); 
+            param.put("idventa", idventa);
+            param.put("imagen", imgen);                       
+            JasperDesign jdesign = JRXmlLoader.load(getFile("Comprobante.jrxml"));
+            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jprint = JasperFillManager.fillReport(jreport, param,
+                   connection);
+            JasperViewer.viewReport(jprint, false);
+        } catch (JRException ex) {
+            System.out.println("Error:\n" + ex.getLocalizedMessage());
+        }
+    }
+
+    public File getFile(String filex) {
+        File newFolder = new File("jasper");
+        String ruta = newFolder.getAbsolutePath();
+//CAMINO = Paths.get(ruta+"/"+"reporte1.jrxml");
+        Path CAMINO = Paths.get(ruta + "/" + filex);
+        System.out.println("Llegasss Ruta 2:" + CAMINO.toFile().getAbsolutePath());
+        return CAMINO.toFile();
     }
 
     public void registarVenta() {
@@ -506,13 +547,13 @@ public class MainVentas extends javax.swing.JPanel {
                 vd.setSubTotal(carritoTO.getPtotal());
                 vd.setDescuento(0);
                 daoV.createVentaDetalle(vd);
-                
-                ProductoDaoI pst= new ProductoDAO();
+
+                ProductoDaoI pst = new ProductoDAO();
                 pst.actualizarStock(vd.getCantidad(), vd.getIdProducto());
             }
         }
         limpiarCarrito();
-        /*runReport1(idx);*/
+        runReport1(idx);
 
     }
 

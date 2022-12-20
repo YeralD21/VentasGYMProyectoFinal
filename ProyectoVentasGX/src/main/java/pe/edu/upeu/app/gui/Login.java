@@ -119,11 +119,11 @@ public class Login extends javax.swing.JFrame {
                 jLabel4KeyPressed(evt);
             }
         });
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-280, 0, 720, 490));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-240, 10, 630, 490));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo negro.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, -10, 600, 470));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 600, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

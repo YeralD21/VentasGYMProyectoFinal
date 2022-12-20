@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="dnix" class="java.lang.String">
+	<parameter name="idventa" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from venta where dniruc=$P{dnix}]]>
+		<![CDATA[select * from venta where id_venta=$P{idventa}]]>
 	</queryString>
 	<field name="id_venta" class="java.lang.Object"/>
 	<field name="preciobase" class="java.lang.Object"/>
