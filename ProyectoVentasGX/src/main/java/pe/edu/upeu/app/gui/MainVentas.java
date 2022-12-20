@@ -39,6 +39,7 @@ public class MainVentas extends javax.swing.JPanel {
     /**
      * Creates new form MainVentas
      */
+    double cantidad = 0;
     ClienteDaoI daoC;
     CarritoDaoI daoCA;
     ProductoDaoI daoP;
@@ -132,6 +133,9 @@ public class MainVentas extends javax.swing.JPanel {
             ob[++x] = listarClientes.get(i).getEstado();
             ob[++x] = "";
             impoTotal += Double.parseDouble(String.valueOf(listarClientes.get(i).getPtotal()));
+            
+            cantidad = Double.parseDouble(String.valueOf(listarClientes.get(i).getCantidad()));
+            
             modelo.addRow(ob);
         }
         JButton btnDel = be.getCellEditorValue().buttons.get(0);
@@ -152,19 +156,27 @@ public class MainVentas extends javax.swing.JPanel {
         });
         jTable1.setModel(modelo);
 
-        double totalDscTop = impoTotal * 0.20;
-        double dt = impoTotal - totalDscTop; 
         
-        txtImporteTotal.setText(String.valueOf(dt));
-        /*txtImporteTotal.setText(String.valueOf(impoTotal));*/
-        
-        double pv = impoTotal / 1.18;
-        txtPrecioB.setText(String.valueOf(Math.round(pv * 100.0) / 100.0));
-        txtIgv.setText(String.valueOf(Math.round((pv * 0.18) * 100.0) / 100.0));
-        
-        
-        txtDescuentoTop.setText(String.valueOf(Math.round(pv * 0.10) *100.0 / 100.0));
+    
+        //CONDICIONAL
+        if (cantidad > 3) {
+            double totalDscTop = impoTotal * 0.20;
+            double dt = impoTotal - totalDscTop;
+            txtImporteTotal.setText(String.valueOf(dt));
+            double pv = impoTotal / 1.18;
+            txtPrecioB.setText(String.valueOf(Math.round(pv * 100.0) / 100.0));
+            txtIgv.setText(String.valueOf(Math.round((pv * 0.18) * 100.0) / 100.0));
+            txtDescuentoTop.setText(String.valueOf(Math.round(pv * 0.10) * 100.0 / 100.0));
+        } else {
+            txtImporteTotal.setText(String.valueOf(impoTotal));
+            double pv = impoTotal / 1.18;
+            txtPrecioB.setText(String.valueOf(Math.round(pv * 100.0) / 100.0));
+            txtIgv.setText(String.valueOf(Math.round((pv * 0.18) * 100.0) / 100.0));
+            return listarClientes;
+        }
         return listarClientes;
+        
+
     }
 
     public void buscarCliente() {
@@ -393,7 +405,7 @@ public class MainVentas extends javax.swing.JPanel {
         jLabel12.setText("P.Total S/");
 
         jLabel13.setFont(new java.awt.Font("Alegreya Sans ExtraBold", 3, 18)); // NOI18N
-        jLabel13.setText("Descuento_Top");
+        jLabel13.setText("Descuento");
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Alegreya Sans ExtraBold", 1, 18)); // NOI18N
@@ -419,18 +431,17 @@ public class MainVentas extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(txtIgv, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addComponent(txtDescuentoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(txtImporteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jLabel13)
-                        .addGap(55, 55, 55)
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(259, 259, Short.MAX_VALUE))
         );
@@ -461,8 +472,12 @@ public class MainVentas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         registarVenta();
+     
     }//GEN-LAST:event_jButton3ActionPerformed
+    
+    
     public void limpiarCarrito() {
         daoCA = new CarritoDAO();
         daoCA.deleteCarAll(txtAutoCompDNI.getText());
@@ -491,6 +506,9 @@ public class MainVentas extends javax.swing.JPanel {
                 vd.setSubTotal(carritoTO.getPtotal());
                 vd.setDescuento(0);
                 daoV.createVentaDetalle(vd);
+                
+                ProductoDaoI pst= new ProductoDAO();
+                pst.actualizarStock(vd.getCantidad(), vd.getIdProducto());
             }
         }
         limpiarCarrito();

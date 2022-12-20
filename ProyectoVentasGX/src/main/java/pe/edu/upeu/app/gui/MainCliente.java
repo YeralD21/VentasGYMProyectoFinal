@@ -25,8 +25,9 @@ import pe.edu.upeu.app.util.MsgBox;
  * @author ACER ASPIRE
  */
 enum TIPOCLXIENTE {
-    Quincenal, Mensual, Trimestral
+    Quincenal, Mensual, Trimestral, UnAño, DosAños
 };
+
 
 public class MainCliente extends javax.swing.JPanel {
 

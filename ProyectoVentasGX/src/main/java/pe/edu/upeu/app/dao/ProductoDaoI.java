@@ -13,6 +13,8 @@ import pe.edu.upeu.app.modelo.ProductoTO;
  * @author ACER ASPIRE
  */
 public interface ProductoDaoI {
+    
+    public int actualizarStock(double cant, double idp);
 
     public int create(ProductoTO d);
 

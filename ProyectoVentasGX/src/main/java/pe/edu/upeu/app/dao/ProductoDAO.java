@@ -23,7 +23,7 @@ import pe.edu.upeu.app.util.ErrorLogger;
  * @author ACER ASPIRE
  */
 public class ProductoDAO implements ProductoDaoI {
-
+    int r;
     Statement stmt = null;
     Vector columnNames;
     Vector visitdata;
@@ -202,4 +202,20 @@ public class ProductoDAO implements ProductoDaoI {
         return listarProductos;
     }
 
+    
+
+    @Override
+    public int actualizarStock(double cant, double idp) {
+        String sql="UPDATE producto set stock=stock-? where id_producto=?";
+        try {
+            connection = new Conn().connectSQLite();
+            ps = connection.prepareStatement(sql);
+            ps.setDouble(1, cant);
+            ps.setDouble(2,idp);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+        return r;
+    }
 }
